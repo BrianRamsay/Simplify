@@ -110,6 +110,9 @@ var simplify = {
 		this.update_numbers();
 
 		this.save();
+
+		// start another one
+		this.start_new_item(category);
 	},
 
 	start_new_category : function() {
@@ -142,10 +145,10 @@ var simplify = {
 		this.container.appendChild(new_category.element);
 		$('add_category_button').inject(this.container);
 
+		this.save();
+
 		// they probably want to add an item to it
 		this.start_new_item(new_category);
-
-		this.save();
 	},
 
 	update_numbers : function() {
