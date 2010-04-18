@@ -1,0 +1,40 @@
+# Compress some files
+<FilesMatch "\.(js|css|html|eot|ttf)$">
+	SetOutputFilter DEFLATE
+</FilesMatch>
+
+# Caching & Expiration Strategies from askapache.com
+
+# etags
+# http://www.askapache.com/htaccess/apache-speed-etags.html
+Header unset ETag
+FileETag None
+
+# last modified
+# http://www.askapache.com/htaccess/apache-speed-last-modified.html
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css)$">
+Header unset Last-Modified
+</FilesMatch>
+
+# future expires
+# http://www.askapache.com/htaccess/apache-speed-expires.html
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|woff|ttf|eot)$">
+Header set Expires "Thu, 15 Apr 2015 20:00:00 GMT"
+</FilesMatch>
+
+# cache control
+#http://www.askapache.com/htaccess/apache-speed-cache-control.html
+# 480 weeks
+<FilesMatch "\.(ico|pdf|flv|jpg|jpeg|png|gif|js|css|swf|woff|ttf|eot)$">
+Header set Cache-Control "max-age=290304000, public"
+</FilesMatch>
+ 
+# 2 DAYS
+<FilesMatch "\.(xml|txt)$">
+Header set Cache-Control "max-age=172800, public, must-revalidate"
+</FilesMatch>
+ 
+# 2 HOURS
+<FilesMatch "\.(html|htm)$">
+Header set Cache-Control "max-age=7200, must-revalidate"
+</FilesMatch>

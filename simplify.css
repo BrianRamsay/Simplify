@@ -1,0 +1,188 @@
+/* Reset some things */
+html, body, div, h1, h2, h3, h4, h5, ul, ol, li, form, fieldset,  
+input, textarea {  
+    margin: 0;  
+    padding: 0;  
+    font-size: 100%;  
+}  
+
+ul {list-style: none;}  
+img, fieldset {border: 0;}
+
+h1, h2, h3, h4 {font-weight: normal;}  
+em {font-style: italic;}  
+strong {font-weight: bold;}
+/* end reset */
+
+html {
+	font-size:1.4em;
+}
+
+body {
+	font-family: Helvetica, sans serif;
+	width: 400px;
+	margin: 5px auto;
+}
+
+h1,h3 {
+	text-align:center;
+}
+
+h1 {
+	font-size:2em;
+}
+
+h3 {
+	font-size:1.1em;
+	margin-bottom:20px;
+}
+
+/* ------- link bar stylings ---------- */
+#linkbar {
+	position:absolute;
+	right:10px;
+}
+
+#linkbar li {
+	display : inline;
+}
+
+#linkbar li:before {
+	content: " | ";
+}
+
+#linkbar li:first-child:before {
+	content: "";
+}
+
+/* ------- list styling ---------- */
+#list_container, .thing_count {
+	width: 75%;
+	margin: 0 auto;
+}
+
+.thing_count {
+	text-align:center;
+	background: rgb(60,60,60);
+	color:white;
+
+	border: 1px solid black;
+}
+
+.thing_count#top {
+	border-bottom:0px;
+	-moz-border-radius-topleft: 10px;
+	-webkit-border-top-left-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-webkit-border-top-right-radius: 10px;
+}
+
+.thing_count#bottom {
+	border-top:0px;
+	-moz-border-radius-bottomleft: 10px;
+	-webkit-border-bottom-left-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-webkit-border-bottom-right-radius: 10px;
+}
+
+/* padding thing count screws up the width */
+h5.category {
+	margin: 5px;
+	margin-bottom:0px;
+	background-color: #aaa;
+	color:white;
+	font-weight:normal;
+	cursor: pointer;
+}
+h5.highlight {
+	background-color: #999;
+}
+
+h5.category span {
+	padding: 8px 0px 3px 10px;
+}
+
+#list_container h5.category input {
+	padding: 3px;
+	width: 90%;
+	margin:4px 10px;
+	font-size:.9em;
+}
+
+.thing_count span {
+	padding:5px;	
+	display:block;
+}
+
+#list_container {
+	border: 1px solid black;
+}
+
+#list_container ul {
+	border: 1px solid #aaa;
+	margin: 5px;
+	margin-top:0px;
+}
+
+#list_container li {
+	padding: 3px 0px 3px 25px;
+	border: 1px solid white;
+	cursor:pointer;
+}
+
+#list_container li.highlight {
+	border-top:1px solid #aaa;
+	border-bottom:1px solid #aaa;
+	background-image: url(images/delete.png);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#list_container li input {
+	padding: 3px;
+	width: 97%;
+	margin-left: -10px;
+	font-size:.9em;
+}
+
+#list_container li.even {
+	background: white;
+	border: 1px solid white;
+}
+
+#list_container li.odd {
+	background: #eee;
+	border: 1px solid #eee;
+}
+
+.add span {
+	display:block;
+	margin-right:5px;
+	background-image: url(images/add.png);
+	background-repeat: no-repeat;
+	background-position: right;
+}
+
+#list_container .addbutton {
+
+	padding: 5px 8px;
+
+	display:block;
+	text-align:center;
+	margin: 5px;
+	border: 1px solid #aaa;
+	cursor: pointer;
+
+	-moz-border-radius-topleft: 15px;
+	-webkit-border-top-left-radius: 15px;
+	-moz-border-radius-topright: 15px;
+	-webkit-border-top-right-radius: 15px;
+	-moz-border-radius-bottomleft: 15px;
+	-webkit-border-bottom-left-radius: 15px;
+	-moz-border-radius-bottomright: 15px;
+	-webkit-border-bottom-right-radius: 15px;
+}
+
+span.highlight {
+	background: #ddd;
+}
