@@ -38,9 +38,13 @@ h3 {
 }
 
 /* ------- link bar stylings ---------- */
-#linkbar {
+#details {
 	position:absolute;
 	right:10px;
+}
+
+#linkbar {
+	float:right;
 }
 
 #linkbar li {
@@ -53,6 +57,33 @@ h3 {
 
 #linkbar li:first-child:before {
 	content: "";
+}
+
+#details #expanded_details {
+	width: 250px;
+	padding-top:5px;
+	clear:both;
+}
+
+#expanded_details .content {
+	border: 1px solid #666;
+	background: #eee;
+	padding:10px;
+	display:none;
+}
+
+#details ul#footer {
+	margin-top: 5px;
+	clear:both;
+}
+#details ul#footer li {
+	clear:right;
+	float:right;
+	font-size: .9em;
+}
+
+#details ul#footer li:first-child {
+	margin: 15px 0 0 0px;
 }
 
 /* ------- list styling ---------- */
@@ -185,4 +216,8 @@ h5.category span {
 
 span.highlight {
 	background: #ddd;
+}
+
+p.tips {
+	font-size:.8em;
 }

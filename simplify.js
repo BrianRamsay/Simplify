@@ -20,6 +20,10 @@ var simplify = {
 
 		this.store = store;
 
+		 $$('#expanded_details .content').each(function(box) {
+			box.setStyle('display', 'none');
+		 });
+
 		store.get('things', function(ok, val) {
 			if(ok) {
 				this.categories = JSON.decode(val) || [];
@@ -28,10 +32,32 @@ var simplify = {
 			}
 			this.initialize_events();
 			this.initialize_list_display();
+
+			if(this.categories.length === 0) {
+				$('empty_explanation').set('text',
+					"You don't need as much stuff as you think you need. Record your stuff, and see how low you can get your number.");
+			}
+
 		}.bind(this));
 	},
 
 	initialize_events : function() {
+		var pick_details_box = function(target) {
+			$$('#expanded_details .content').each(function(box) {
+				if(box.id === target) {
+					box.setStyle('display', 'block');
+				} else {
+					box.setStyle('display', 'none');
+				}
+			});
+		};
+
+		$$('#linkbar a').each(function(link) {
+			$(link).addEvent('click', function(e) {
+				pick_details_box(link.href.replace(/^.*#/, ''));
+				e.stop();
+			});
+		});
 	},
 
 	initialize_list_display : function() {
@@ -274,7 +300,11 @@ var simplify = {
 		  	this.store.set('things', json_list);
 		} catch (err) {
 		  	// display save error
-		  	alert("Couldn't save data: " + err);
+			if(err.toString().match(/QUOTA_EXCEEDED_ERR/)) {
+		  		alert("There was an error saving your list.  If you have private browsing on, please turn it off and reload the page before continuing.");
+			} else {
+		  		alert("Couldn't save data: " + err);
+			}
 		}
 	}
 };
