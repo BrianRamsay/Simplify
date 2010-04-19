@@ -25,9 +25,9 @@
 			<li><a href="#about">About</a></li>
 		</ul>
 		<div id="expanded_details">
-			<div class="content" id="login">Creating a user account is not enabled yet.  Don"t worry, the list still saves without an account.</div>
-			<div class="content" id="help"><b>I can"t find my list!</b><br />Make sure you are using the same browser as when you created it.</div>
-			<div class="content" id="about">I first encountered this concept on <a href="http://mnmlist.com/50-things/">mnmlist.com</a>, and I was intrigued by the concept that not only could I survive with only 100 possessions, but that my life might be richer for it.  I"m looking forward to eliminating some of the junk I have accumulated over the years. Leo is down to 50 items! (100 will be tough enough for me right now)</div>
+			<div class="content" id="login">Creating a user account is not enabled yet.  Don't worry, the list still saves without an account.</div>
+			<div class="content" id="help"><b>I can't find my list!</b><br />Make sure you are using the same browser as when you created it.</div>
+			<div class="content" id="about">I first encountered this concept on <a href="http://mnmlist.com/50-things/">mnmlist.com</a>, and I was intrigued by the concept that not only could I survive with only 100 possessions, but that my life might be richer for it.  I'm looking forward to eliminating some of the junk I have accumulated over the years. Leo is down to 50 items! (100 will be tough enough for me right now)</div>
 		</div>
 		<ul id="footer">
 			<li>Created By Brian Ramsay</li>		

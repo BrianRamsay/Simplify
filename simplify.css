@@ -72,17 +72,17 @@ h3 {
 	display:none;
 }
 
-#details ul#footer {
+#footer {
 	margin-top: 5px;
 	clear:both;
 }
-#details ul#footer li {
+#footer li {
 	clear:right;
 	float:right;
 	font-size: .9em;
 }
 
-#details ul#footer li:first-child {
+#footer li:first-child {
 	margin: 15px 0 0 0px;
 }
 
@@ -117,7 +117,7 @@ h3 {
 }
 
 /* padding thing count screws up the width */
-h5.category {
+.category {
 	margin: 5px;
 	margin-bottom:0px;
 	background-color: #aaa;
@@ -129,11 +129,11 @@ h5.highlight {
 	background-color: #999;
 }
 
-h5.category span {
+.category span {
 	padding: 8px 0px 3px 10px;
 }
 
-#list_container h5.category input {
+#list_container .category input {
 	padding: 3px;
 	width: 90%;
 	margin:4px 10px;
