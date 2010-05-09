@@ -3,6 +3,7 @@
 <head>
 	<title>Simplify - Limit Yourself</title>
 	<link href="simplify.css" media="screen" rel="stylesheet" type="text/css" />
+	<meta name="google-site-verification" content="NioKFsvpTKEZ8AYfp95aIHW2jHWe-uiOSJszfA4IcZY" />
 	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="chrome=1" />
 	<meta name="description" content="A list tracker for the 100 Thing challenge initiated by Dave Bruno." />
@@ -52,7 +53,7 @@
 	</p>
 
 	<!-- Get our scripts in order.  not optimized yet obviously -->
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/mootools/1.2.4/mootools-yui-compressed.js"></script>
+	<script type="text/javascript" src="mootools.js"></script>
 	<script type="text/javascript" src="simplify.js"></script>
 	<script type="text/javascript" src="persist-all-min.js"></script>
 	<script type="text/javascript">

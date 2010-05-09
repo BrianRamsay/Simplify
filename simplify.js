@@ -35,7 +35,7 @@ var simplify = {
 
 			if(this.categories.length === 0) {
 				$('empty_explanation').set('text',
-					"You don't need as much stuff as you think you need. Record your stuff, and see how low you can get your number.");
+					"You don't need as much stuff as you think you need. Record your stuff, and discover what's cluttering up your life.");
 			}
 
 		}.bind(this));
