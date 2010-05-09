@@ -88,7 +88,7 @@ h3 {
 
 /* ------- list styling ---------- */
 #list_container, .thing_count {
-	width: 75%;
+	width: 90%;
 	margin: 0 auto;
 }
 
@@ -163,7 +163,7 @@ h5.highlight {
 }
 
 #list_container li {
-	padding: 3px 0px 3px 25px;
+	padding: 3px 0px 3px 10px;
 	border: 1px solid white;
 	cursor:pointer;
 }
