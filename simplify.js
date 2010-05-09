@@ -1,4 +1,7 @@
 /*global $, $$, $A, Element, JSON, Persist */
+
+var MAX_WIDTH = 3;
+
 // utility function
 function make_clickable(element, click_func) {
 	element.addEvent('mouseover', function() { element.addClass('highlight'); });
@@ -35,7 +38,7 @@ var simplify = {
 
 			if(this.categories.length === 0) {
 				$('empty_explanation').set('text',
-					"You don't need as much stuff as you think you need. Record your stuff, and see how low you can get your number.");
+					"You don't need as much stuff as you might think. Record your things, and see how low you can get your number.");
 			}
 
 		}.bind(this));
@@ -62,6 +65,9 @@ var simplify = {
 
 	initialize_list_display : function() {
 		this.container.set('text','');
+
+		var btn = this.make_add_category_button();
+		this.container.appendChild(btn);
 		
 		var list_frag = document.createDocumentFragment();
 
@@ -73,22 +79,21 @@ var simplify = {
 		}.bind(this));
 		this.container.appendChild(list_frag);
 
-		var btn = this.make_add_category_button();
-		this.container.appendChild(btn);
-
 		this.update_numbers();
+
+		this.resize_categories();
 	},
 
 	make_category_element : function(category) {
-		var list_frag = document.createDocumentFragment();
+		var box = new Element('div', { 'class' : 'category_box' });
 
-		category.element = new Element('h5', {'html' : "<span> " + category.name + "</span>"});
-		category.element.addClass('category');
-		category.element.addClass('add');
+		category.title = new Element('h5', {'html' : "<span> " + category.name + "</span>"});
+		category.title.addClass('category');
+		category.title.addClass('add');
 
-		make_clickable(category.element, function(e) { this.start_new_item(category); }.bind(this));
+		make_clickable(category.title, function(e) { this.start_new_item(category); }.bind(this));
 
-		list_frag.appendChild(category.element);
+		box.appendChild(category.title);
 
 		var list = new Element('ul');
 		$A(category.items).each(function(item) {
@@ -97,9 +102,10 @@ var simplify = {
 		}.bind(this));
 
 		category.list = list;
-		list_frag.appendChild(list);
+		category.box = box;
+		box.appendChild(list);
 
-		return list_frag;
+		return box;
 	},
 
 	make_item_element : function(item) {
@@ -115,6 +121,14 @@ var simplify = {
 			'class' : 'item_entry',
 			'placeholder' : 'What item do you have?' // ah webkit, how I love thee
 		});
+		inp.addEvent('blur', function(e) {
+			if(inp.value === '') {
+				inp.parentNode.removeChild(inp);
+				if(parent_category.items.length === 0) {
+					this.remove_category(parent_category);
+				}
+			}
+		}.bind(this));
 		inp.addEvent('keydown', function(e) {
 			if(e.key === 'enter') {
 				this.add_new_item(inp.value, parent_category);	
@@ -149,6 +163,11 @@ var simplify = {
 			'class' : 'category_entry',
 			'placeholder' : 'What kind of items?' // ah webkit, how I love thee
 		});
+		inp.addEvent('blur', function(e) {
+			if(inp.value === '') {
+				cat.parentNode.removeChild(cat);
+			}
+		});
 		inp.addEvent('keydown', function(e) {
 			if(e.key === 'enter') {
 				this.add_new_category(inp.value);	
@@ -158,18 +177,21 @@ var simplify = {
 			}
 		}.bind(this));
 		cat.appendChild(inp);
-		cat.inject($('add_category_button'), 'before');
+		//cat.inject($('add_category_button'), 'before');
+		cat.inject($('add_category_button'), 'after');
 		inp.focus();
 	},
 
 	add_new_category : function(category_desc) {
 		var new_category = {name:  category_desc, items: []};
-		new_category.element = this.make_category_element(new_category);
+		new_category.title = this.make_category_element(new_category);
 		this.categories.push(new_category);
 
+		this.container.appendChild(new_category.title);
 		// a little swaperooo
-		this.container.appendChild(new_category.element);
-		$('add_category_button').inject(this.container);
+		//$('add_category_button').inject(this.container);
+
+		this.resize_categories();
 
 		this.save();
 
@@ -201,14 +223,26 @@ var simplify = {
 		this.categories = this.categories.filter(function(cat) {
 			return (cat.name !== cat_to_remove.name);
 		});
-		cat_to_remove.element.parentNode.removeChild(cat_to_remove.element);
+		cat_to_remove.title.parentNode.removeChild(cat_to_remove.title);
 		cat_to_remove.list.parentNode.removeChild(cat_to_remove.list);
 
 		if(this.last_category && this.last_category.name === cat_to_remove.name) {
 			this.last_category = null;
 		}
 
+		this.resize_categories();
+
 		this.save();
+	},
+
+	resize_categories : function() {
+		var width = Math.max(400, Math.min(100 + this.categories.length * 300, MAX_WIDTH*300+100));
+		$(document.body).setStyle('width', width + 'px');
+
+		var columns = Math.max(1, Math.min(MAX_WIDTH, this.categories.length));
+		this.categories.each(function(cat) {
+			cat.box.setStyle('width', Math.round(100 / columns) + '%');
+		});
 	},
 
 	recount : function() {
